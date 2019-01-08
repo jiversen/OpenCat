@@ -129,13 +129,14 @@ void setServoPulse(uint8_t n, double pulse) {
 
 }
 
-char num = '0';
+char num = 'a';
 int t = 0, tStep = 1;
 void loop() {
   // Drive each servo one at a time
   if (Serial.available()) {
     num = Serial.read();
     shutServos();
+    t = 0;
   }
   if (num == 'a')
     for (int servonum = 0; servonum < 16; servonum++) {
@@ -153,7 +154,7 @@ void loop() {
     Serial.println();
   }
 
-  delay(500);
+  delay(5);
   //pwm.setPWM(servonum, 0, 4096);
 
   t += tStep;
